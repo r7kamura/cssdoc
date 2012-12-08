@@ -1,0 +1,7 @@
+<ul>
+  <% @documents.each do |document| %>
+    <li>
+      <%= link_to document.path, document.path %>
+    </li>
+  <% end %>
+</ul>

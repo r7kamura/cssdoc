@@ -1,0 +1,9 @@
+// # button
+// basic button design
+//
+// ```
+// <button class="button">button</button>
+// ```
+.button {
+  padding: 10px;
+}

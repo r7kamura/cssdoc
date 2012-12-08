@@ -15,5 +15,9 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Cssdoc::VERSION
 
+  gem.add_dependency "sinatra"
+  gem.add_dependency "sinatra_more"
+  gem.add_dependency "nokogiri"
+  gem.add_dependency "redcarpet"
   gem.add_development_dependency "rspec", "2.12.0"
 end

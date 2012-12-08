@@ -1,0 +1,16 @@
+<h3>
+  <%= @document.path %>
+</h3>
+
+<ul>
+  <% @document.sections.each do |section| %>
+    <li>
+      <pre>
+        <%= section.render %>
+      </pre>
+      <div class="example">
+        <%= section.code %>
+      </div>
+    </li>
+  <% end %>
+</ul>
