@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "cssdoc"
   gem.require_paths = ["lib"]
   gem.version       = Cssdoc::VERSION
+
+  gem.add_development_dependency "rspec", "2.12.0"
 end
