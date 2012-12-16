@@ -1,6 +1,7 @@
 require "sinatra"
 require "sinatra_more/markup_plugin"
 require "slim"
+require "sass"
 
 module Cssdoc
   class App < ::Sinatra::Base
@@ -17,7 +18,7 @@ module Cssdoc
       index = params[:index].to_i
       path  = params[:splat][0]
       @html = settings.finder.find(path).sections[index].code
-      @css  = File.read(path)
+      @css  = compile(path)
       slim :demo, :layout => false
     end
 
@@ -34,6 +35,17 @@ module Cssdoc
     get "/*" do
       @document = settings.finder.find(params[:splat][0]) or halt 404
       slim :show
+    end
+
+    helpers do
+      def compile(path)
+        content = File.read(path)
+        if path =~ /\.sass$/
+          Sass.compile(content, :syntax => :sass)
+        else
+          Sass.compile(content)
+        end
+      end
     end
   end
 end
