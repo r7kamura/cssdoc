@@ -1,6 +1,10 @@
 h3= @document.path
 
-- @document.sections.each_with_index do |section, index|
-  section
-    == section.render
-    iframe src="/demo/#{index}/#{@document.path}"
+.document
+  - @document.sections.each_with_index do |section, index|
+    section
+      == section.render
+      - if section.code
+        -# This iframe's height will be set by js.
+      .demo
+        iframe src="/demo/#{index}/#{@document.path}" height="0" scrolling="no"

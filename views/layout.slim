@@ -6,10 +6,11 @@ html
     == stylesheet_link_tag "reset"
     == stylesheet_link_tag "bootstrap.min"
     == stylesheet_link_tag "application"
+    == javascript_include_tag "jquery-1.8.3.min"
 
   body
     header
-      h1 cssdoc
+      h1== link_to "cssdoc", "/"
 
     .main
       == yield

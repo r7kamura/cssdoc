@@ -23,9 +23,7 @@ module Cssdoc
     end
 
     get "/stylesheets/*.css" do
-      content_type 'text/css', :charset => 'utf-8'
-      filename = params[:splat].first
-      scss filename.to_sym, :views => "#{settings.root}/assets/stylesheets"
+      scss params[:splat][0].to_sym, :views => "#{settings.root}/assets/stylesheets"
     end
 
     get "/favicon.ico" do
@@ -39,12 +37,9 @@ module Cssdoc
 
     helpers do
       def compile(path)
-        content = File.read(path)
-        if path =~ /\.sass$/
-          Sass.compile(content, :syntax => :sass)
-        else
-          Sass.compile(content)
-        end
+        options = { :style => :compressed }
+        options[:syntax] = :sass if path =~ /\.sass$/
+        Sass.compile(File.read(path), options)
       end
     end
   end
