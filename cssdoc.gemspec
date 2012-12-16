@@ -1,12 +1,11 @@
-# -*- encoding: utf-8 -*-
 require File.expand_path('../lib/cssdoc/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Ryo Nakamura"]
   gem.email         = ["r7kamura@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = "Generates CSS styleduide as a web application"
+  gem.summary       = "CSS styleguide generator"
+  gem.homepage      = "https://github.com/r7kamura/cssdoc"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
