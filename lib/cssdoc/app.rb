@@ -12,9 +12,23 @@ module Cssdoc
       erb :index
     end
 
+    get "/demo/:index/*" do
+      index = params[:index].to_i
+      path  = params[:splat][0]
+      @html = settings.manager.find(path).sections[index].code
+      @css  = File.read(path)
+      erb :demo, :layout => false
+    end
+
     get "/*" do
-      @document = settings.manager.find(params[:splat][0])
+      @document = settings.manager.find(params[:splat][0]) or halt 404
       erb :show
+    end
+
+    helpers do
+      def demo(path, index)
+        content_tag(:iframe, :src => "/demo/#{index}/#{path}")
+      end
     end
   end
 end

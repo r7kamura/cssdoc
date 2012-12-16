@@ -3,14 +3,12 @@
 </h3>
 
 <ul>
-  <% @document.sections.each do |section| %>
+  <% @document.sections.each_with_index do |section, index| %>
     <li>
       <pre>
         <%= section.render %>
       </pre>
-      <div class="example">
-        <%= section.code %>
-      </div>
+      <%= demo(@document.path, index) %>
     </li>
   <% end %>
 </ul>
