@@ -21,6 +21,12 @@ module Cssdoc
       slim :demo, :layout => false
     end
 
+    get "/stylesheets/*.css" do
+      content_type 'text/css', :charset => 'utf-8'
+      filename = params[:splat].first
+      scss filename.to_sym, :views => "#{settings.root}/assets/stylesheets"
+    end
+
     get "/favicon.ico" do
       halt 404
     end
