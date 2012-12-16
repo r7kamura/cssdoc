@@ -15,10 +15,10 @@ module Cssdoc
     end
 
     get "/demo/:index/*" do
-      index = params[:index].to_i
-      path  = params[:splat][0]
-      @html = settings.finder.find(path).sections[index].code
-      @css  = compile(path)
+      path   = params[:splat][0]
+      @index = params[:index].to_i
+      @html  = settings.finder.find(path).sections[@index].code
+      @css   = compile(path)
       slim :demo, :layout => false
     end
 

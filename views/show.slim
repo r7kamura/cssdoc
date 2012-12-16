@@ -4,7 +4,12 @@ h3= @document.path
   - @document.sections.each_with_index do |section, index|
     section
       == section.render
-      - if section.code
-        -# This iframe's height will be set by js.
       .demo
-        iframe src="/demo/#{index}/#{@document.path}" height="0" scrolling="no"
+        iframe src="/demo/#{index}/#{@document.path}" scrolling="no" id="demo#{index}"
+
+javascript:
+  $(function() {
+    $('iframe').load(function() {
+      //this.height = this.contentWindow.document.body.offsetHeight;
+    });
+  });
