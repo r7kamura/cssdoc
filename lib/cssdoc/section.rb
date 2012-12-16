@@ -20,7 +20,9 @@ module Cssdoc
     end
 
     def code
-      tree.css("code")[-1].text.strip
+      if node = tree.css("code")[-1]
+        node.text.strip
+      end
     end
 
     def render
