@@ -4,7 +4,6 @@ module Cssdoc
   class DocumentManager
     def initialize(pattern = "**/*.{css,sass,scss}")
       @pattern = pattern
-      preload
     end
 
     def find(path)
@@ -20,10 +19,6 @@ module Cssdoc
     private
 
     attr_reader :pattern
-
-    def preload
-      path_document_table
-    end
 
     def path_document_table
       @path_document_table ||= documents.inject({}) do |hash, document|
