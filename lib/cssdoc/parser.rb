@@ -12,17 +12,16 @@ module Cssdoc
         end_single_comment   if !in_comment && current_section && !line.comment?
         end_multi_comment    if line.end_multi_comment?
       end
-      Document.new(path, sections)
+      Document.new(@path, sections)
     end
 
     private
 
-    attr_reader :path
-    attr_accessor :current_section
-    attr_accessor :in_comment
+    attr_accessor :current_section, :in_comment
+    private       :current_section, :in_comment
 
     def lines
-      path.each_line.map {|line| Line.new(line) }
+      @path.each_line.map {|line| Line.new(line) }
     end
 
     def sections
