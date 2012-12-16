@@ -11,8 +11,13 @@ module Cssdoc
     end
 
     def documents
-      @documents ||= paths.map do |path|
-        Parser.new(path).parse
+      @documents ||= paths.inject([]) do |array, path|
+        document = Parser.new(path).parse
+        if document.sections.empty?
+          array
+        else
+          array << document
+        end
       end
     end
 
