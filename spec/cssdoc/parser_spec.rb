@@ -15,6 +15,14 @@ module Cssdoc
     end
 
     describe "#parse" do
+      subject do
+        parser.parse
+      end
+
+      let(:section) do
+        subject.sections[0]
+      end
+
       context "when file has a comment section of single line format" do
         let(:content) do
           <<-EOF
@@ -30,8 +38,7 @@ module Cssdoc
         end
 
         it "finds 1 comment section" do
-          parser.parse
-          parser.send(:sections).should have(1).section
+          section.code.should == '<button class="button">button</button>'
         end
       end
 
@@ -52,8 +59,7 @@ module Cssdoc
         end
 
         it "finds 1 comment section" do
-          parser.parse
-          parser.send(:sections).should have(1).section
+          section.code.should == '<button class="button">button</button>'
         end
       end
 
@@ -85,8 +91,7 @@ module Cssdoc
         end
 
         it "finds 2 comment section" do
-          parser.parse
-          parser.send(:sections).should have(2).section
+          subject.sections.should have(2).section
         end
       end
     end
