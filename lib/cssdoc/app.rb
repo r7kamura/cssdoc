@@ -20,6 +20,10 @@ module Cssdoc
       erb :demo, :layout => false
     end
 
+    get "/favicon.ico" do
+      halt 404
+    end
+
     get "/*" do
       @document = settings.manager.find(params[:splat][0]) or halt 404
       erb :show
