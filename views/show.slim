@@ -1,0 +1,6 @@
+h3= @document.path
+
+- @document.sections.each_with_index do |section, index|
+  section
+    == section.render
+    iframe src="/demo/#{index}/#{@document.path}"

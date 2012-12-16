@@ -1,5 +1,6 @@
 require "sinatra"
 require "sinatra_more/markup_plugin"
+require "slim"
 
 module Cssdoc
   class App < ::Sinatra::Base
@@ -9,7 +10,7 @@ module Cssdoc
 
     get "/" do
       @documents = settings.finder.documents
-      erb :index
+      slim :index
     end
 
     get "/demo/:index/*" do
@@ -17,7 +18,7 @@ module Cssdoc
       path  = params[:splat][0]
       @html = settings.finder.find(path).sections[index].code
       @css  = File.read(path)
-      erb :demo, :layout => false
+      slim :demo, :layout => false
     end
 
     get "/favicon.ico" do
@@ -26,13 +27,7 @@ module Cssdoc
 
     get "/*" do
       @document = settings.finder.find(params[:splat][0]) or halt 404
-      erb :show
-    end
-
-    helpers do
-      def demo(path, index)
-        content_tag(:iframe, :src => "/demo/#{index}/#{path}") { "" }
-      end
+      slim :show
     end
   end
 end
