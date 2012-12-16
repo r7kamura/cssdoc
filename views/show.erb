@@ -2,13 +2,9 @@
   <%= @document.path %>
 </h3>
 
-<ul>
-  <% @document.sections.each_with_index do |section, index| %>
-    <li>
-      <pre>
-        <%= section.render %>
-      </pre>
-      <% demo(@document.path, index) %>
-    </li>
-  <% end %>
-</ul>
+<% @document.sections.each_with_index do |section, index| %>
+  <section>
+    <%= section.render %>
+    <% demo(@document.path, index) %>
+  </section>
+<% end %>

@@ -11,7 +11,10 @@ module Cssdoc
       private
 
       def renderer
-        @renderer ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+        @renderer ||= Redcarpet::Markdown.new(
+          Redcarpet::Render::HTML,
+          :fenced_code_blocks => true
+        )
       end
     end
 
