@@ -1,29 +1,40 @@
 # Cssdoc
-
-TODO: Write a gem description
+CSS styleguide generator
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 'cssdoc'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install cssdoc
+```
+gem install cssdoc
+```
 
 ## Usage
+Write a document as comment for your css(scss, sass) in Github Flavored Markdown.
 
-TODO: Write usage instructions here
+```
+/*
+  # .button
+  basic button design
 
-## Contributing
+  ```
+  <button class="button">
+    button
+  </button>
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Added some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+  <button class="button danger">
+    danger
+  </button>
+  ```
+*/
+.button {
+  ...
+}
+```
+
+and launch cssdoc
+
+```
+cssdoc
+```
+
+and then, open [http://localhost:4567](http://localhost:4567)
+
+![](http://dl.dropbox.com/u/5978869/image/20121216_210857.png)
