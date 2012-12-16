@@ -37,9 +37,11 @@ module Cssdoc
 
     helpers do
       def compile(path)
-        options = { :style => :compressed }
-        options[:syntax] = :sass if path =~ /\.sass$/
-        Sass.compile(File.read(path), options)
+        @compile ||= begin
+          options = { :style => :compressed }
+          options[:syntax] = :sass if path =~ /\.sass$/
+          Sass.compile(File.read(path), options)
+        end
       end
     end
   end
