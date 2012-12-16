@@ -5,17 +5,17 @@ module Cssdoc
   class App < ::Sinatra::Base
     register SinatraMore::MarkupPlugin
     set :root, File.expand_path("../../../", __FILE__)
-    set :manager, DocumentManager.new
+    set :finder, DocumentFinder.new
 
     get "/" do
-      @documents = settings.manager.documents
+      @documents = settings.finder.documents
       erb :index
     end
 
     get "/demo/:index/*" do
       index = params[:index].to_i
       path  = params[:splat][0]
-      @html = settings.manager.find(path).sections[index].code
+      @html = settings.finder.find(path).sections[index].code
       @css  = File.read(path)
       erb :demo, :layout => false
     end
@@ -25,7 +25,7 @@ module Cssdoc
     end
 
     get "/*" do
-      @document = settings.manager.find(params[:splat][0]) or halt 404
+      @document = settings.finder.find(params[:splat][0]) or halt 404
       erb :show
     end
 

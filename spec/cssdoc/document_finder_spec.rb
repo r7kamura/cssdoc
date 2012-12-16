@@ -1,7 +1,7 @@
 require "spec_helper"
 
 module Cssdoc
-  describe DocumentManager do
+  describe DocumentFinder do
     let(:manager) do
       described_class.new
     end

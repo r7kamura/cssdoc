@@ -1,7 +1,7 @@
 require "pathname"
 
 module Cssdoc
-  class DocumentManager
+  class DocumentFinder
     def initialize(pattern = "**/*.{css,sass,scss}")
       @pattern = pattern
     end
