@@ -23,7 +23,7 @@ module Cssdoc
     end
 
     def code
-      if node = tree.css("code")[-1]
+      if node = tree.css("pre > code")[-1]
         node.text.strip
       end
     end
