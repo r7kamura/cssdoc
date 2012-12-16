@@ -31,7 +31,7 @@ module Cssdoc
 
     helpers do
       def demo(path, index)
-        content_tag(:iframe, :src => "/demo/#{index}/#{path}")
+        content_tag(:iframe, :src => "/demo/#{index}/#{path}") { "" }
       end
     end
   end
