@@ -5,8 +5,7 @@ CSS styleguide generator
 ```
 git clone git@github.com:r7kamura/cssdoc.git
 cd cssdoc
-bundle install
-bundle exec rake install
+rake install
 ```
 
 ## Usage
