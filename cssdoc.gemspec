@@ -14,6 +14,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Cssdoc::VERSION
 
+  gem.add_dependency "sass"
   gem.add_dependency "sinatra"
   gem.add_dependency "sinatra_more"
   gem.add_dependency "slim"
